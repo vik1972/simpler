@@ -9,13 +9,13 @@ class TestsController < Simpler::Controller
   def create
     render plain: "Test created"
 
-    status 201
+    status(201)
   end
 
   def show
     @test_id = params[:id]
 
-    status 200
+    status(200)
   end
 
 end

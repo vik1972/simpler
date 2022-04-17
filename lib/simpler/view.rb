@@ -33,8 +33,10 @@ module Simpler
       path = template || default_path
       
       if template == "text"
+        @env['simpler.template_path'] = "#{default_path}.text.erb"
         Simpler.root.join(VIEW_BASE_PATH, "#{default_path}.text.erb")
       else
+        @env['simpler.template_path'] = "#{default_path}.html.erb"
         Simpler.root.join(VIEW_BASE_PATH, "#{path}.html.erb")
       end
     end

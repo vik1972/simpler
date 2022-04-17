@@ -16,7 +16,7 @@ module Simpler
       @request.env['simpler.action'] = action
 
       set_default_headers
-      set_default_status
+      status(200)
       send(action)
       write_response
 
@@ -38,10 +38,6 @@ module Simpler
 
     def headers
       @response.headers
-    end
-
-    def set_default_status
-      status 200
     end
 
     def status(code)
