@@ -14,6 +14,7 @@ module Simpler
     def initialize
       @router = Router.new
       @db = nil
+      @env = nil
     end
 
     def bootstrap!
@@ -27,7 +28,11 @@ module Simpler
     end
 
     def call(env)
+      @env = env
       route = @router.route_for(env)
+
+      return route_not_found unless route
+
       controller = route.controller.new(env)
       action = route.action
 
@@ -52,6 +57,15 @@ module Simpler
 
     def make_response(controller, action)
       controller.make_response(action)
+    end
+
+    def route_not_found
+      @env['simpler.response.status'] = 404
+      [
+        404,
+        {'Content-Type' => 'text/plain'},
+        ["Error 404: Not found\n"]
+      ]
     end
 
   end

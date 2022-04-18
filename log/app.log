@@ -1,0 +1,16 @@
+I, [2022-04-17T21:48:12.010372 #6634]  INFO -- : ===============================================================
+Request:    GET /favicon.ico
+Response:   404 [] 
+
+I, [2022-04-17T21:48:24.976084 #6634]  INFO -- : ===============================================================
+Request:    GET /tests
+Handler:    TestsController#index
+Parameters: {}
+Response:   200 [text/plain] tests/index.text.erb
+
+I, [2022-04-17T21:52:52.158744 #6634]  INFO -- : ===============================================================
+Request:    GET /tests/10
+Handler:    TestsController#show
+Parameters: {:id=>"10"}
+Response:   200 [text/html] tests/show.html.erb
+
